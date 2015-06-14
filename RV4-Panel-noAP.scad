@@ -67,7 +67,7 @@ mm=1;
 
 // uncomment (set to true) to see if the models have sufficient clearance.
 show_outer_dimensions=false;
-show_outer_dimensions=true;
+//show_outer_dimensions=true;
 
 
 difference(){
@@ -86,7 +86,7 @@ difference(){
         translate([10.32*inch/2 + 1.80*inch, (4.5 +7.06/4)* inch, 0])
             Falcon_ALT20INF_3();
         
-        // Stby. Horz. LH bot
+        // Kanardia EMSIS Stby. Horz. LH bot
         translate([-10.32*inch/2 - 1.80*inch, (4.5 -7.06/4)* inch, 0])
             StdInst3_125();
 
@@ -98,7 +98,7 @@ difference(){
             PTT_SW_12_MM();
             
         // USB connection
-        translate([-9.75 * inch, (4.5 -7.06/4) * inch, 0])
+        translate([11.375 * inch, (4.5 -7.06/4 + 0.125) * inch, 0])
             #circle(15); // correct size need to be established
         
         // G-Meter RH top
