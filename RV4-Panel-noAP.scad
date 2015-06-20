@@ -44,6 +44,9 @@
 //
 //          Aera500_panel_mount() added
 //
+//  20.06.2015 jblo
+//          USB_Connector_LTW() added
+//
 //  Open: Backside attachment holes (shunt / GND / Power busses etc.)
 //  Open: CTEK Charger connection (optional)
 //  Open: Libelle
@@ -51,7 +54,6 @@
 //  Open: Clip for aerobatic prog. card
 //  Open: Audible warning OFF switch (for aerobatic)
 //  Open: TY91 outer dimensions
-//  Open: USB Connection for Dynon updates & charts
 //
 //  What we do NOT put in the panel, but at some other place:
 //  (Just to act as a reminder for completeness of avionics here)
@@ -97,10 +99,10 @@ difference(){
         translate([10.32*inch/2 + 4*inch, (4.5 +7.06/4)* inch, 0])
             PTT_SW_12_MM();
             
-        // USB connection
+        // USB Connection for Dynon updates & charts
         translate([11.375 * inch, (4.5 -7.06/4 + 0.125) * inch, 0])
-            #circle(15); // correct size need to be established
-        
+            USB_Connector_LTW();
+            
         // G-Meter RH top
         translate([9.75 * inch, 4.5 * inch, 0])
             Accel_BJ10_2();
@@ -555,6 +557,23 @@ module PTT_SW_12_MM() {
 
 module Aera500_panel_mount() {
         square([6.250*inch, 4.250*inch], center=true);
+}
+
+module USB_Connector_LTW() {
+    // LTW (China) Type female USB socket with cable
+    difference() {
+        circle(13/16*inch/2);
+        union() {
+            // Anti rotation flat on LH side
+            w=13/16;
+            translate([-w*inch/2, 0, 0])
+                square([(2/16) * inch, w * inch], center=true);
+        }
+    }
+    if(show_outer_dimensions) {
+        // outer dimensions
+        circle(29*mm/2);
+    }
 }
 
 module RV4_F_403_Instrument_Panel() {
